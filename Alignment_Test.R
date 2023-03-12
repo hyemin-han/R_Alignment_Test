@@ -1,5 +1,7 @@
 # measurement alignment test with Fisher & Karl (2019)
 
+##### 0. Package importing and dataset loading
+
 # package load
 library(lavaan)
 library(sirt)
@@ -27,6 +29,7 @@ data <- data[order(data$country),]
 # extract country names
 countries <- labels(table(data$country))[[1]]
 
+##### 1. MG-CFA
 #####
 # first, let's start with MGCFA
 # let's focus on help for now for alignment
@@ -64,6 +67,7 @@ fitMeasures(fit.help.scalar)[fits]-fitMeasures(fit.help.metric)[fits]
 # 0.015512027  0.009475471 -0.036277857 
 # both rmsea and cfi changes exceeded threshold. alignment necessary
 
+##### 2. Measurement alignment
 #####
 # Then, let's perform measurement alignment
 
@@ -89,6 +93,7 @@ summary(cmod)
 # nu noninvariance item = 5.4%
 # acceptable
 
+##### 3. Monte Carlo Simulation
 #####
 # Monte Carlo simulation
 
@@ -275,7 +280,7 @@ parallel::stopCluster(cl)
 
 # in all cases, cor ≥ 95%. Good
 
-
+##### 4. Factor score calculation
 #####
 # calculate factor scores based on aligned loadings and intercepts
 
