@@ -67,7 +67,7 @@ fitMeasures(fit.help.scalar)[fits]-fitMeasures(fit.help.metric)[fits]
 # 0.015512027  0.009475471 -0.036277857 
 # both rmsea and cfi changes exceeded threshold. alignment necessary
 
-##### 2. Measurement alignment
+##### 2. Measurement Alignment
 #####
 # Then, let's perform measurement alignment
 
@@ -93,7 +93,7 @@ summary(cmod)
 # nu noninvariance item = 5.4%
 # acceptable
 
-##### 3. Monte Carlo Simulation
+##### 3. Monte Carlo Simulations
 #####
 # Monte Carlo simulation
 
@@ -280,7 +280,7 @@ parallel::stopCluster(cl)
 
 # in all cases, cor ≥ 95%. Good
 
-##### 4. Factor score calculation
+##### 4. Factor Score Calculation
 #####
 # calculate factor scores based on aligned loadings and intercepts
 
