@@ -28,6 +28,8 @@ data <- data[order(data$country),]
 
 # extract country names
 countries <- labels(table(data$country))[[1]]
+# number of country groups to be examined
+n.include <- length (countries)
 
 ##### 1. MG-CFA
 #####
@@ -66,6 +68,15 @@ fitMeasures(fit.help.scalar)[fits]
 fitMeasures(fit.help.scalar)[fits]-fitMeasures(fit.help.metric)[fits]
 # 0.015512027  0.009475471 -0.036277857 
 # both rmsea and cfi changes exceeded threshold. alignment necessary
+
+# residual invariance (just for testing)
+fit.help.residual <- cfa (cfa_model.help, data, group = 'country',
+                        estimator='WLSMV', group.equal=c('loadings','intercepts',
+                                                         'residuals'))
+fitMeasures(fit.help.residual)[fits]
+#rmsea.scaled         srmr   cfi.scaled 
+#0.06703950   0.07359188   0.89808207
+
 
 ##### 2. Measurement Alignment
 #####
@@ -289,7 +300,7 @@ parallel::stopCluster(cl)
 # basically, x = lambda*X + nu
 # so, X = inv (lambda) (x - nu) 
 aligned.factor.scores <- function(lambda,nu,y){
-  #calculate inverse matrix
+  #calculate inverse matrix of lambda
   lambda1 <- ginv((lambda))
   #create matrix for nu
   ns <- nrow(y)
