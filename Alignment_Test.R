@@ -204,7 +204,6 @@ simulation <- function(n,data,model,lv,
 # use five cores
 # and repeat each test 500 times
 cores <- 5
-times <- 500
 
 # create threads to distribute tasks
 cl <- parallel::makeCluster(cores,type='FORK')
