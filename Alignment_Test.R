@@ -212,7 +212,7 @@ doParallel::registerDoParallel(cl)
 # start simulation with n = 100
 # time measure as well
 
-start_100 <-Sys.time()
+#start_100 <-Sys.time()
 now <- foreach (i = seq(1,times)) %dopar%{
   # do simulation
   #simulation <- function(n,data,model,lv,
@@ -221,8 +221,8 @@ now <- foreach (i = seq(1,times)) %dopar%{
              n.include, data$country,var.help,par.help,i)
   #  message(sprintf('%d',i))
 }
-end_100<-Sys.time()
-elapsed_100 <- end_100 - start_100
+#end_100<-Sys.time()
+#elapsed_100 <- end_100 - start_100
 # merge result
 for (i in 1:times){
   if (i == 1){
