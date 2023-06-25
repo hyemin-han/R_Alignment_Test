@@ -213,11 +213,12 @@ doParallel::registerDoParallel(cl)
 # time measure as well
 
 #start_100 <-Sys.time()
+n <- 100 
 now <- foreach (i = seq(1,times)) %dopar%{
   # do simulation
   #simulation <- function(n,data,model,lv,
   #                       n.include,groups,items,par,seed=1)
-  simulation(100,data,cfa_model.help,'help',
+  simulation(n ,data,cfa_model.help,'help',
              n.include, data$country,var.help,par.help,i)
   #  message(sprintf('%d',i))
 }
