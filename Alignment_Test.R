@@ -299,14 +299,14 @@ parallel::stopCluster(cl)
 # from adjusted lambda and nu
 # basically, x = lambda*X + nu
 # so, X = inv (lambda) (x - nu) 
-aligned.factor.scores <- function(lambda,nu,y){
+aligned.factor.scores <- function(lambda, nu, X){
   #calculate inverse matrix of lambda
   lambda1 <- ginv((lambda))
   #create matrix for nu
-  ns <- nrow(y)
+  ns <- nrow(X)
   nus <- matrix(nu,nrow=ns, ncol=length(nu), byrow=T)
   # y - nu
-  y_nu <- y - nu
+  y_nu <- X - nu
   F <- lambda1 %*% t(as.matrix(y_nu))
 }
 
