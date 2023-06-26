@@ -69,13 +69,14 @@ fitMeasures(fit.help.scalar)[fits]-fitMeasures(fit.help.metric)[fits]
 # 0.015512027  0.009475471 -0.036277857 
 # both rmsea and cfi changes exceeded threshold. alignment necessary
 
-# residual invariance (just for testing)
+# residual invariance 
 fit.help.residual <- cfa (cfa_model.help, data, group = 'country',
                         estimator='WLSMV', group.equal=c('loadings','intercepts',
                                                          'residuals'))
 fitMeasures(fit.help.residual)[fits]
 #rmsea.scaled         srmr   cfi.scaled 
 #0.06703950   0.07359188   0.89808207
+fitMeasures(fit.help.residual)[fits]-fitMeasures(fit.help.scalar)[fits]
 
 
 ##### 2. Measurement Alignment
@@ -302,10 +303,7 @@ parallel::stopCluster(cl)
 # so, X = inv (lambda) (x - nu) 
 aligned.factor.scores <- function(lambda, nu, X){
   #calculate inverse matrix of lambda
-  lambda1 <- ginv((lambda))
-  #create matrix for nu
-  ns <- nrow(X)
-  nus <- matrix(nu,nrow=ns, ncol=length(nu), byrow=T)
+  lambda1 <- ginv(lambda)
   # y - nu
   y_nu <- X - nu
   F <- lambda1 %*% t(as.matrix(y_nu))
