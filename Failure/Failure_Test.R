@@ -210,7 +210,7 @@ simulation <- function(n,data,model,lv,
 # use five cores
 # and repeat each test 500 times
 cores <- 5
-times <- 10
+times <- 500
 
 # create threads to distribute tasks
 cl <- parallel::makeCluster(cores,type='FORK')
@@ -220,7 +220,7 @@ doParallel::registerDoParallel(cl)
 # time measure as well
 
 #start_100 <-Sys.time()
-n <- 500 
+n <- 100 
 now <- foreach (i = seq(1,times)) %dopar%{
   # do simulation
   #simulation <- function(n,data,model,lv,
@@ -296,4 +296,3 @@ print(describe(simulate_500),digits=4)
 # terminate multiprocessing
 parallel::stopCluster(cl)
 
-# in all cases, cor ≥ 95%. Good
