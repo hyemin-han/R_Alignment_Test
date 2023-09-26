@@ -102,6 +102,13 @@ mod.help$es.invariance['R2',]
 #  loadings intercepts 
 # 0.9344503  0.9888906 
 
+# As per Alexander's suggestion, use 2 for loss function
+mod.help.loss <- invariance.alignment(lambda = par.help$lambda, nu =
+                                   par.help$nu, align.scale = c(0.2, 0.4), align.pow = c(2, 2))
+mod.help.loss$es.invariance['R2',]
+#  loadings intercepts 
+#0.9595497  0.9909209 
+# result updated
 
 # item-level test
 cmod <- invariance_alignment_constraints(mod.help, lambda_parm_tol = .4, nu_parm_tol = .22)

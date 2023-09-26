@@ -98,6 +98,17 @@ mod.help$es.invariance['R2',]
 # 0.9979870  0.9996975
 # 99% absolbed -> great result
 
+# Alexander suggested used of 2 for loss function. So, compare the result
+mod.help.loss <- invariance.alignment(lambda = par.help$lambda, nu =
+                                   par.help$nu, align.scale = c(0.2, 0.4), align.pow = c(2, 2))
+
+# test performance
+mod.help.loss$es.invariance['R2',]
+#  loadings intercepts 
+# 0.9981392  0.9997081 
+# R^2 statistics altered
+
+
 # item-level test
 cmod <- invariance_alignment_constraints(mod.help, lambda_parm_tol = .4, nu_parm_tol = .2)
 summary(cmod)
