@@ -1,3 +1,13 @@
+# IMPORTANT NOTES OF UPDATES. MUST READ BEFORE USING THE CODE!!!!!
+(Special thanks to *sirt* developer, Alexander Robitzsch)
+Based on comments from Alexander, I would like to pay attention to these points while using the alignment method implemented in *sirt*:<br>
+
+1. Altering "align.scale" argument in "invariance.alignment" will not significantly influence the outcome. Please disregard my concern regarding the selection of "align.scale" in the discussion section.
+2. R^2 statistics are likely to be biased when the default loss function is used in "invariance.alignment." Alexander suggested other statistics might be more appropriate to test whether alignment was done successfully. You may refer to other statistics, such as the result from Monte Carlo simulation. Alternatively, if you need to use R^2, then you should use a different loss function by specifying **"align.pow=c(2,2)"** instead of "align.pow=c(.25,.25)" in "invariance.alignment."
+
+# Citation
+Han, H. (2023). Using Measurement Alignment in Research on Adolescence Involving Multiple Groups: A Brief Tutorial with R. *Journal of Research on Adolescence*. https://doi.org/10.1111/jora.12891
+
 # Tutorial for measurement alignment with R (sirt)
  
 In this code (Alignment_Test.R), I will demonstrate how to perform:
